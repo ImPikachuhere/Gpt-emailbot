@@ -1,0 +1,34 @@
+services:
+  - type: web
+    name: telegram-url-health-bot
+    env: python
+    plan: free
+
+    buildCommand: pip install -r requirements.txt
+
+    startCommand: python server.py
+
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+
+      - key: ADMIN_USER_IDS
+        sync: false
+
+      - key: ALLOWED_DOMAINS
+        sync: false
+
+      - key: MAX_WORKERS
+        value: "5"
+
+      - key: REQUEST_TIMEOUT
+        value: "15"
+
+      - key: MAX_FILE_SIZE_MB
+        value: "20"
+
+      - key: MAX_LINES_PER_JOB
+        value: "10000"
+
+      - key: PER_DOMAIN_DELAY
+        value: "1"
